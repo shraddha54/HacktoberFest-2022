@@ -1,0 +1,28 @@
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+
+using namespace std;
+string solve(string a, char c)
+{
+	int n = a.size();
+	string res = "";
+	for (int i = 0; i < n; i++)
+	{
+
+		if (a[i] != c)
+		{
+			res += a[i];
+		}
+	}
+	return res;
+}
+
+int main()
+{
+	string s = "fjhgjfd ehfj 546544 nrnf @ fnjg @vjfgh g5g";
+	char c = '@';
+	cout << solve(s, c ) << endl;
+	return 0;
+
+}
