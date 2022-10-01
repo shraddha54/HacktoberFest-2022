@@ -1,0 +1,92 @@
+/*
+     ContestName     =   Shinchu_itachi
+   " Walking on the road not taken with my own gutts.. "
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std ;
+
+
+/* observation , we know that for xor , the elements having odd no of ith bit set will contribute to the answer
+   eg :- 2  -  0010
+         1  -  0001
+         2  -  0010
+         2  -  0010
+bit count   =  0021   so even becomes 0 and odd is multiplied with power of 2 ^ i
+     xor ^  =  0001
+*/
+
+/* we also know that if we do or with any number we will get either >= num but not less than num
+   so using the this fact we can check how many pairs we can form .
+   to find number of pairs we will first count all the total set bits in array b
+   and then we will traverse element in a to find if ith bit is set.
+   if the bit is set the whole bits will be set since the element will be ORed so the conunt will size of the array a
+   else if it is not set only arry b element will contirbute to the solution */
+
+void solve() {
+    int n , m  ; cin >> n >> m ;
+    vi a ( n ) , b ( m ) , have ( 32 ) , total(32);
+
+    fin ( a )
+
+    // we will count the no of set bits in each elements and store it in have vector
+    for ( int i = 0 ; i < m ; i ++) {
+        cin >> b[i];
+        for ( int j = 0 ; j < 32 ; j ++) {
+            if ( b[i] & ( 1 << j )) have[j] ++ ;
+        }
+    }
+
+
+    for ( int i = 0 ; i < n ; i ++) {
+        for ( int j = 0 ; j < 32 ; j ++) {
+            if ( a[i] & ( 1 << j )) total[j] += n;
+            else total[j] += have[j];
+        }
+    }
+
+    long long sum = 0;
+    for ( int i = 0 ; i < 32 ; i ++ ) {
+        sum += (1LL * 1 << i ) * ( total[i] & 1) ;
+    }
+
+    cout << sum << endl;
+}
+
+
+
+inline void testcases() {
+    int test = 1, testcase = 1 ;
+    //cin >> test ;
+
+    cout << setprecision(12) ;
+    cerr << setprecision(8) ;
+    while (test --) {
+        // cout << "Case #" << testcase++ << ": ";
+        solve () ;
+    }
+}
+
+
+
+
+
+int main () {
+    fastio();
+
+#ifndef ONLINE_JUDGE
+    // freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    //freopen("error.txt", "w", stderr);
+#endif
+
+    auto start = high_resolution_clock::now();
+
+    testcases();
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+
+    cerr << "Time : " << duration.count() / 1000 ;
+}
