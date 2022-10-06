@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+main()
+{
+	int i;
+	int s=5;
+	int j;
+	int l=0;
+	for(i=1;i<=5;i=i+1)
+	{for(j=1;j<=s;j=j+1)
+	{
+	cout<<" ";
+
+	}
+	
+	cout<<"*";
+	for(j=1;j<=l;j=j+1)
+	
+	{if(i==3)
+	{cout<<"*";
+	}
+	else
+	{cout<<" ";
+	}
+	
+
+	}
+	cout<<"*";
+	
+	
+	
+	cout<<"\n";
+	s=s-1;
+	l=l+2;
+	}
+}
